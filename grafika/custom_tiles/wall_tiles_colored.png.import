@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/colored_transparent.png-00103ffa55b7117b8ec0db76a0ec81b5.stex"
+path="res://.import/wall_tiles_colored.png-9d849f4e0210ec021934765f8b43e6c3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafika/Tilesheet/colored_transparent.png"
-dest_files=[ "res://.import/colored_transparent.png-00103ffa55b7117b8ec0db76a0ec81b5.stex" ]
+source_file="res://grafika/custom_tiles/wall_tiles_colored.png"
+dest_files=[ "res://.import/wall_tiles_colored.png-9d849f4e0210ec021934765f8b43e6c3.stex" ]
 
 [params]
 
