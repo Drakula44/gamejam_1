@@ -12,6 +12,9 @@ var speed = 300
 var jump_force = 400
 var direction = 0
 
+var fallMultiplier = 1.5
+var lowJumpMultiplier = 10
+
 func set_physics_layer(index, value):
 	set_collision_layer_bit(index, value)
 	set_collision_mask_bit(index, value)
@@ -23,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	vel.y += gravity*delta
+	
 	
 	
 	if Input.is_action_just_pressed("change_dimension"):
@@ -47,7 +50,14 @@ func _physics_process(delta):
 	
 	vel.x = speed*direction
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	vel.y += gravity*delta
+	
+	if vel.y > 0:
+		vel.y += gravity * delta * fallMultiplier
+	elif vel.y < 0 and Input.is_action_just_released("jump"):
+		vel.y += gravity * delta * lowJumpMultiplier
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		vel.y -= jump_force
 	
 	vel = move_and_slide(vel, Vector2.UP)
