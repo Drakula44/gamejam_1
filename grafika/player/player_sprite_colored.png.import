@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/greenguy.png-cd8bbe93ad9ba67a3ca65425f90f2f23.stex"
+path="res://.import/player_sprite_colored.png-dbe162ccd82381c75e53e0d38b0a4511.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://greenguy.png"
-dest_files=[ "res://.import/greenguy.png-cd8bbe93ad9ba67a3ca65425f90f2f23.stex" ]
+source_file="res://grafika/player/player_sprite_colored.png"
+dest_files=[ "res://.import/player_sprite_colored.png-dbe162ccd82381c75e53e0d38b0a4511.stex" ]
 
 [params]
 

@@ -23,6 +23,7 @@ func set_physics_layer(index, value):
 func _ready():
 	pass # Replace with function body.
 
+var sprites = [load("res://grafika/player/player_sprite_colored.png"),load("res://grafika/player/player_sprite_monochrome.png"),load("res://grafika/player/player_sprite_inverted.png") ]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -35,6 +36,7 @@ func _physics_process(delta):
 		set_physics_layer(1, false)
 		set_physics_layer(2, false)
 		set_physics_layer(currentDimension, true)
+		get_node("Sprite").set_texture(sprites[currentDimension])
 		
 	var right = Input.is_action_pressed("move_right")
 	var left = Input.is_action_pressed("move_left")
