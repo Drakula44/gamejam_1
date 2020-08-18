@@ -6,6 +6,12 @@ extends KinematicBody2D
 # var b = "text"
 var currentDimension = 0
 
+var vel : Vector2 = Vector2()
+var gravity = 800
+var speed = 300
+var jump_force = 400
+var direction = 0
+
 func set_physics_layer(index, value):
 	set_collision_layer_bit(index, value)
 	set_collision_mask_bit(index, value)
@@ -14,11 +20,11 @@ func set_physics_layer(index, value):
 func _ready():
 	pass # Replace with function body.
 
-var vel : Vector2 = Vector2()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	vel.y += 800*delta
-	vel = move_and_slide(vel, Vector2.UP)
+	vel.y += gravity*delta
+	
 	
 	if Input.is_action_just_pressed("change_dimension"):
 		currentDimension = (currentDimension+1)%3
@@ -27,6 +33,23 @@ func _physics_process(delta):
 		set_physics_layer(2, false)
 		set_physics_layer(currentDimension, true)
 		
-		
+	var right = Input.is_action_pressed("move_right")
+	var left = Input.is_action_pressed("move_left")
+	
+	if right:
+		direction = 1
+		get_node("Sprite").set_flip_h(false)
+	if left:
+		direction = -1
+		get_node("Sprite").set_flip_h(true)
+	if (not left and not right) or (left and right):
+		direction = 0
+	
+	vel.x = speed*direction
+	
+	if Input.is_action_pressed("jump") and is_on_floor():
+		vel.y -= jump_force
+	
+	vel = move_and_slide(vel, Vector2.UP)
 		
 	
